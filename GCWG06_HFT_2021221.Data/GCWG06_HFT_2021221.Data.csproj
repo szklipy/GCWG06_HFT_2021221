@@ -5,6 +5,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MedicalDb.mdf" />
+    <None Remove="MedicalDb_log.ldf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MedicalDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MedicalDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GCWG06_HFT_2021221.Models\GCWG06_HFT_2021221.Models.csproj" />
   </ItemGroup>
 
