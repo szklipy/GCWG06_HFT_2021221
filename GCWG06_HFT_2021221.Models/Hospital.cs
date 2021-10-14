@@ -19,12 +19,34 @@ namespace GCWG06_HFT_2021221.Models
         //public string country { get; set; }
         [NotMapped]
         public string MainData => $"[{this.Hospital_id}] : {this.Hospital_name}," +
-            $" location: {this.Hospital_location}";
+            $" location: ({this.Hospital_location}), departments: ({Departments.Count()})," +
+            $" employees: ({Employees.Count()})";
         [NotMapped]
-        public virtual ICollection<Employee>Employees { get; }
+        public virtual ICollection<Employee> Employees { get; set; }
         [NotMapped]
-        //nullable enable
-        public virtual ICollection<Department> Departments { get; }
-
+        public virtual ICollection<Department> Departments { get; set; }
+        public Hospital()
+        {
+            Employees = new HashSet<Employee>();
+            Departments = new HashSet<Department>();
+        }
+        public override string ToString()
+        {
+            return $"id: {this.Hospital_id}, Name: {this.Hospital_name}";
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Hospital)
+            {
+                Hospital other = obj as Hospital;
+                return this.Hospital_id == other.Hospital_id &&
+                    this.Hospital_name == Hospital_name;
+            }
+            return false;
+        }
+        public override int GetHashCode()
+        {
+            return (int)this.Hospital_id + this.Hospital_name.GetHashCode();
+        }
     }
 }
