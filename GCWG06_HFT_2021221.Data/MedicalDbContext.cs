@@ -12,7 +12,7 @@ namespace GCWG06_HFT_2021221.Data
     {
         public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
-        //employees dbset also needed
+        public virtual DbSet<Employee> Employees { get; set; }
         public MedicalDbContext()
         {
             this.Database.EnsureCreated();
@@ -23,6 +23,20 @@ namespace GCWG06_HFT_2021221.Data
             {
                 optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MedicalDb.mdf;Integrated Security=True");
             }
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //hospitals
+            //departments
+            //employees
+
+            //modelbuilders
+            //one-many many-many one-one many-one
+            modelBuilder.Entity<Hospital>(entity =>
+            {
+                
+            });
+
         }
     }
 }
