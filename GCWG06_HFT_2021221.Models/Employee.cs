@@ -26,7 +26,10 @@ namespace GCWG06_HFT_2021221.Models
         public string MainData => $"[{this.Employee_id}] : {this.Name}," +
             $" hospital_id: {this.Hospital_id}, department_id: {this.Department_id}," +
             $" hire_date: {this.Hire_date}, job_title: {this.Job_title}";
-        
+        [NotMapped]
+        public virtual Hospital Hospital { get; set; }
+        [NotMapped]
+        public virtual Department Department { get; set; }
         public override string ToString()
         {
             return $"id: {this.Employee_id}, Name: {this.Name}";

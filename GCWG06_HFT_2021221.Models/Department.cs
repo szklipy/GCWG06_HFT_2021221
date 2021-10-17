@@ -19,16 +19,16 @@ namespace GCWG06_HFT_2021221.Models
         public string Department_name { get; set; }
         [NotMapped]
         public string MainData => $"[{this.Department_id}] : {this.Department_name}," +
-            $" in ({this.Hospitals.Count()}) hospital, no. employees: " +
-            $"({this.Employees.Count()})";
+            $" no. employees: ({this.Employees.Count()})";
         [NotMapped]
         public virtual ICollection<Employee> Employees { get; set; }
         [NotMapped]
-        public virtual ICollection<Hospital> Hospitals { get; set; }
+        public virtual Hospital Hospital { get; set; }
+        //public virtual ICollection<Hospital> Hospitals { get; set; }
         public Department()
         {
             Employees = new HashSet<Employee>();
-            Hospitals = new HashSet<Hospital>();
+            //Hospitals = new HashSet<Hospital>();
         }
         public override string ToString()
         {

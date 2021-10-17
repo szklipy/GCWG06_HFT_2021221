@@ -32,10 +32,40 @@ namespace GCWG06_HFT_2021221.Data
 
             //modelbuilders
             //one-many many-many one-one many-one
-            modelBuilder.Entity<Hospital>(entity =>
+
+
+            //dep. (one-many) emp.
+            //hosp. (one-many) emp.
+            //hosp. (one-many) dep.
+
+            modelBuilder.Entity<Employee>(entity =>
             {
-                
+                entity.HasOne(employee => employee.Department)
+                .WithMany(department => department.Employees)
+                .HasForeignKey(employee => employee.Department_id)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+                //álítólag ez így működik
+                entity.HasOne(employee => employee.Hospital)
+                .WithMany(hospital => hospital.Employees)
+                .HasForeignKey(employee => employee.Hospital_id)
+                .OnDelete(DeleteBehavior.ClientSetNull);
             });
+
+            //modelBuilder.Entity<Employee>(entity =>
+            //{
+            //    entity.HasOne(employee => employee.Hospital)
+            //    .WithMany(hospital => hospital.Employees)
+            //    .HasForeignKey(employee => employee.Hospital_id)
+            //    .OnDelete(DeleteBehavior.ClientSetNull);
+            //});
+            modelBuilder.Entity<Department>(entity =>
+            {
+                entity.HasOne(department => department.Hospital)
+                .WithMany(hospital => hospital.Departments)
+                .HasForeignKey(department => department.Hospital_id)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+            });
+
 
         }
     }
