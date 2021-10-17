@@ -16,9 +16,9 @@ namespace GCWG06_HFT_2021221.Models
         
         public int Employee_id { get; set; }
         [ForeignKey(nameof(Department))]
-        public int Department_id { get; set; }
+        public int? Department_id { get; set; }
         [ForeignKey(nameof(Hospital))]
-        public int Hospital_id { get; set; }
+        public int? Hospital_id { get; set; }
         public string Name { get; set; }
         public string Hire_date { get; set; }
         public string Job_title { get; set; }

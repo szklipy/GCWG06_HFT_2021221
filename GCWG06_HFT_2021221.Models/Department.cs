@@ -15,7 +15,7 @@ namespace GCWG06_HFT_2021221.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Department_id { get; set; }
         [ForeignKey(nameof(Hospital))]
-        public int Hospital_id { get; set; }
+        public int? Hospital_id { get; set; }
         public string Department_name { get; set; }
         [NotMapped]
         public string MainData => $"[{this.Department_id}] : {this.Department_name}," +
