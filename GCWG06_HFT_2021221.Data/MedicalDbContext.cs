@@ -35,7 +35,7 @@ namespace GCWG06_HFT_2021221.Data
 
             //modelbuilders
             //one-many many-many one-one many-one
- Department d1 = new Department() { Department_id = 1, Department_name = "Internal Medicine Infectology", Hospital_id = 1 };
+            Department d1 = new Department() { Department_id = 1, Department_name = "Internal Medicine Infectology", Hospital_id = 1 };
             Department d2 = new Department() { Department_id = 2, Department_name = "Hospice department", Hospital_id = null };
             Department d3 = new Department() { Department_id = 3, Department_name = "Central Operating Room", Hospital_id = 1 };
             Department d4 = new Department() { Department_id = 4, Department_name = "Pathology", Hospital_id = 1 };
@@ -59,6 +59,7 @@ namespace GCWG06_HFT_2021221.Data
             Employee e15 = new Employee() { Employee_id = 15, Name = "Usain Bolt", Job_title = "", Hire_date = "", Hospital_id = 1, Department_id = 6 };
             Employee e16 = new Employee() { Employee_id = 16, Name = "John Newmann", Job_title = "head physician", Hire_date = "", Hospital_id = 1, Department_id = 6 };
             Employee e17 = new Employee() { Employee_id = 17, Name = "Albert Robinson", Job_title = "nurse", Hire_date = "", Hospital_id = 1, Department_id = 1 };
+            
             
 
             //dep. (one-many) emp.
