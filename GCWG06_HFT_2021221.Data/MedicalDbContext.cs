@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GCWG06_HFT_2021221.Data
 {
-    class MedicalDbContext : DbContext
+    public class MedicalDbContext : DbContext
     {
         public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
