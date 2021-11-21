@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GCWG06_HFT_2021221.Logic
 {
-    class EmployeeLogic : IEmployeeLogic
+    public class EmployeeLogic : IEmployeeLogic
     {
         IEmployeeRepository empRepo;
         public EmployeeLogic(IEmployeeRepository empRepo)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GCWG06_HFT_2021221.Logic
 {
-    class DepartmentLogic : IDepartmentLogic
+    public class DepartmentLogic : IDepartmentLogic
     {
         IDepartmentRepository depRepo;
         public DepartmentLogic(IDepartmentRepository depRepo)
