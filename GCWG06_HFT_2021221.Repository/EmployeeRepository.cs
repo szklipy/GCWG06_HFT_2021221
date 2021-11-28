@@ -45,6 +45,7 @@ namespace GCWG06_HFT_2021221.Repository
             employeeToUpdate.Hospital = employee.Hospital;
             employeeToUpdate.Department = employee.Department;
             employeeToUpdate.Hire_date = employee.Hire_date;
+            employeeToUpdate.Salary = employee.Salary;
             ctx.SaveChanges();
         }
     }
