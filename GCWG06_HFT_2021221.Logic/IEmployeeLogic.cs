@@ -14,5 +14,13 @@ namespace GCWG06_HFT_2021221.Logic
         void Create(Employee employee);
         void Delete(int id);
         void Update(Employee employee);
+        double AVGSalary();
+        
+        IList<AveragesResultSal> GetSalaryAverages();
+        IEnumerable<KeyValuePair<int, double>> 
+            AVGSalaryByDepartments();
+        IList<AveragesResultEmp> GetEmployeesAverages();
+        IEnumerable<KeyValuePair<int, double>> 
+            AVGEmployeesByDepartment();
     }
 }
