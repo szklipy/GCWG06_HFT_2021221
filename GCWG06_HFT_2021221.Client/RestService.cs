@@ -42,7 +42,7 @@ namespace GCWG06_HFT_2021221.Client
             HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
-                items = response.Content.ReadFromJsonAsync<List<T>>().GetAwaiter().GetResult();
+                items = response.Content.ReadAsAsync<List<T>>().GetAwaiter().GetResult();
             }
             return items;
         }
@@ -53,8 +53,7 @@ namespace GCWG06_HFT_2021221.Client
             HttpResponseMessage response = client.GetAsync(endpoint).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
-                //item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
-                item = response.Content.ReadFromJsonAsync<T>().GetAwaiter().GetResult();
+                item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
             }
             return item;
         }
@@ -65,7 +64,7 @@ namespace GCWG06_HFT_2021221.Client
             HttpResponseMessage response = client.GetAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
             if (response.IsSuccessStatusCode)
             {
-                item = response.Content.ReadFromJsonAsync<T>().GetAwaiter().GetResult();
+                item = response.Content.ReadAsAsync<T>().GetAwaiter().GetResult();
             }
             return item;
         }
