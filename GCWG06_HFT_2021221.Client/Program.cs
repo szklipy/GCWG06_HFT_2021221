@@ -9,7 +9,7 @@ namespace GCWG06_HFT_2021221.Client
         static void Main(string[] args)
         {
             //Console.WriteLine("Hello World!");
-            RestService restService = new RestService("http://localhost:51716");
+            RestService restService = new RestService("http://localhost:63187");
 
             restService.Post<Department>(new Department()
             {
