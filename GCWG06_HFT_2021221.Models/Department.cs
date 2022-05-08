@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GCWG06_HFT_2021221.Models
@@ -14,14 +15,21 @@ namespace GCWG06_HFT_2021221.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Department_id { get; set; }
+
         [ForeignKey(nameof(Hospital))]
         public int? Hospital_id { get; set; }
         public string Department_name { get; set; }
+
+        [JsonIgnore]
         [NotMapped]
         public string MainData => $"[{this.Department_id}] : {this.Department_name}," +
             $" no. employees: ({this.Employees.Count()})";
+
+        [JsonIgnore]
         [NotMapped]
         public virtual ICollection<Employee> Employees { get; set; }
+
+        [JsonIgnore]
         [NotMapped]
         public virtual Hospital Hospital { get; set; }
         //public virtual ICollection<Hospital> Hospitals { get; set; }

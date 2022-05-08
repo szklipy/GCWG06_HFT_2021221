@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GCWG06_HFT_2021221.Models
@@ -23,12 +24,18 @@ namespace GCWG06_HFT_2021221.Models
         public string Hire_date { get; set; }
         public string Job_title { get; set; }
         public int? Salary { get; set; }
+
+        [JsonIgnore]
         [NotMapped]
         public string MainData => $"[{this.Employee_id}] : {this.Name}," +
             $" hospital_id: {this.Hospital_id}, department_id: {this.Department_id}," +
             $" hire_date: {this.Hire_date}, job_title: {this.Job_title}, slaray: {this.Salary}";
+
+        [JsonIgnore]
         [NotMapped]
         public virtual Hospital Hospital { get; set; }
+
+        [JsonIgnore]
         [NotMapped]
         public virtual Department Department { get; set; }
         public override string ToString()

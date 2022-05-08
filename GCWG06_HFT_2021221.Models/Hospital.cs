@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GCWG06_HFT_2021221.Models
@@ -17,14 +18,21 @@ namespace GCWG06_HFT_2021221.Models
         public string Hospital_name { get; set; }
         public string Hospital_location { get; set; }
         //public string country { get; set; }
+
+        [JsonIgnore]
         [NotMapped]
         public string MainData => $"[{this.Hospital_id}] : {this.Hospital_name}," +
             $" location: ({this.Hospital_location}), departments: ({Departments.Count()})," +
             $" employees: ({Employees.Count()})";
+
+        [JsonIgnore]
         [NotMapped]
         public virtual ICollection<Employee> Employees { get; set; }
+
+        [JsonIgnore]
         [NotMapped]
         public virtual ICollection<Department> Departments { get; set; }
+
         public Hospital()
         {
             Employees = new HashSet<Employee>();
