@@ -12,7 +12,7 @@ namespace GCWG06_HFT_2021222.WpfClient
         public RestCollection<Employee> Employees { get; set; }
         public MainWindowViewModel()
         {
-            Employees = new RestCollection<Employee>("http://localhost:16099/swagger/", "employee");
+            Employees = new RestCollection<Employee>("http://localhost:16099/", "employee");
 
         }
     }

@@ -18,17 +18,17 @@ namespace GCWG06_HFT_2021221.Client
             bool isOk = false;
             do
             {
-                isOk = Ping();
+                isOk = Ping(baseurl + pingableEndpoint);
             } while (isOk == false);
             Init(baseurl);
         }
 
-        private bool Ping()
+        private bool Ping(string url)
         {
             try
             {
                 WebClient wc = new WebClient();
-                wc.DownloadData("http://localhost:63187/employee");
+                wc.DownloadData(url);
                 return true;
             }
             catch
