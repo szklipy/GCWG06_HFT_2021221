@@ -40,6 +40,8 @@ namespace GCWG06_HFT_2021221.Endpoint2
             services.AddTransient<IDepartmentLogic, DepartmentLogic>();
             services.AddTransient<IHospitalLogic, HospitalLogic>();
 
+            //services.AddSignalR();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

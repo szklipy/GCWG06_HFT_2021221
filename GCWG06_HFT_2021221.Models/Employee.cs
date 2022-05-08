@@ -14,8 +14,8 @@ namespace GCWG06_HFT_2021221.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        
         public int Employee_id { get; set; }
+
         [ForeignKey(nameof(Department))]
         public int? Department_id { get; set; }
         [ForeignKey(nameof(Hospital))]
