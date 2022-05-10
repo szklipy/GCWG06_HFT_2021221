@@ -1,6 +1,38 @@
 ﻿let employees = [];
-
+let connection = null;
 getdata();
+setupSignalR();
+
+function setupSignalR() {
+    connection = new signalR.HubConnectionBuilder()
+        .withUrl("http://localhost:14432/hub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+    connection.on("EmployeeCreated", (user, message) => {
+        getdata();
+    });
+
+    connection.on("EmployeeDeleted", (user, message) => {
+        getdata();
+    });
+
+    connection.onclose(async () => {
+        await start();
+    });
+    start();
+
+}
+
+async function start() {
+    try {
+        await connection.start();
+        console.log("SignalR Connected.");
+    } catch (err) {
+        console.log(err);
+        setTimeout(start, 5000);
+    }
+};
 
 async function getdata() {
     await fetch('http://localhost:16099/employee')
