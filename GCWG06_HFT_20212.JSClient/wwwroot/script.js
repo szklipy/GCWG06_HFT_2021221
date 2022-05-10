@@ -1,11 +1,14 @@
 ﻿let employees = [];
 let connection = null;
+
+let employeeIdToUpdate = -1;
+
 getdata();
 setupSignalR();
 
 function setupSignalR() {
     connection = new signalR.HubConnectionBuilder()
-        .withUrl("http://localhost:14432/hub")
+        .withUrl("http://localhost:16099/hub")
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
@@ -14,6 +17,10 @@ function setupSignalR() {
     });
 
     connection.on("EmployeeDeleted", (user, message) => {
+        getdata();
+    });
+
+    connection.on("EmployeeUpdated", (user, message) => {
         getdata();
     });
 
@@ -53,9 +60,20 @@ function display() {
             "<tr><td>" + t.employee_id + "</td><td>"
             + t.name + "</td><td>"
             + t.salary + "</td><td>"
-            + `<button type="buttin" onclick="remove(${t.employee_id})">Delete</button>`
+        + `<button type="buttin" onclick="remove(${t.employee_id})">Delete</button>`
+        + `<button type="buttin" onclick="showupdate(${t.employee_id})">Update</button>`
             + "</td></tr>";
     });
+}
+
+function showupdate(id) {
+
+
+    document.getElementById('employeeNameToUpdate').value = employees.find(t => t['employee_id'] == id)['name'];
+    document.getElementById('employeeSalaryToUpdate').value = employees.find(t => t['employee_id'] == id)['salary'];
+    document.getElementById('updateformdiv').style.display = 'flex';
+    employeeIdToUpdate = id;
+
 }
 
 function remove(id) {
@@ -69,6 +87,25 @@ function remove(id) {
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let name = document.getElementById('employeeNameToUpdate').value;
+    let salary = document.getElementById('employeeSalaryToUpdate').value;
+    fetch('http://localhost:16099/employee', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { name: name, salary: salary, employee_id: employeeIdToUpdate}),
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            getdata();
+        })
+        .catch((error) => { console.log('Error:', error); });
+
 }
 
 function create() {

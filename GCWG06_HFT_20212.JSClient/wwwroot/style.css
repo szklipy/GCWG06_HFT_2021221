@@ -16,6 +16,21 @@ th{
     background-color: lightblue;
 }
 
+#updateformdiv {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    #updateformdiv label, input {
+        margin: 10px;
+        padding: 7px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }
+
 #formdiv{
     display: flex;
     flex-direction: column;
