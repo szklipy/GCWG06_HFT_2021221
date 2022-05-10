@@ -15,12 +15,12 @@ namespace GCWG06_HFT_2021221.Endpoint2.Controllers
     public class EmployeeController : ControllerBase
     {
         IEmployeeLogic logic;
-        //IHubContext<SignalRHub> hub;
+        IHubContext<SignalRHub> hub;
 
-        public EmployeeController(IEmployeeLogic logic/*, IHubContext<SignalRHub> hub*/)
+        public EmployeeController(IEmployeeLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
-            //this.hub = hub;
+            this.hub = hub;
         }
 
         [HttpGet]
@@ -39,14 +39,14 @@ namespace GCWG06_HFT_2021221.Endpoint2.Controllers
         public void Create([FromBody] Employee value)
         {
             this.logic.Create(value);
-            //this.hub.Clients.All.SendAsync("EmployeeCreated", value);
+            this.hub.Clients.All.SendAsync("EmployeeCreated", value);
         }
 
         [HttpPut]
         public void Update([FromBody] Employee value)
         {
             this.logic.Update(value);
-            //this.hub.Clients.All.SendAsync("EmployeeUpdated", value);
+            this.hub.Clients.All.SendAsync("EmployeeUpdated", value);
         }
 
         [HttpDelete("{id}")]
@@ -54,7 +54,7 @@ namespace GCWG06_HFT_2021221.Endpoint2.Controllers
         {
             var employeeToDelete = this.logic.GetEmployeeById(id);
             this.logic.Delete(id);
-            //this.hub.Clients.All.SendAsync("ActorDeleted", employeeToDelete);
+            this.hub.Clients.All.SendAsync("ActorDeleted", employeeToDelete);
         }
     }
 }

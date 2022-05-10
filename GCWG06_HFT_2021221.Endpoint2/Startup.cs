@@ -40,7 +40,7 @@ namespace GCWG06_HFT_2021221.Endpoint2
             services.AddTransient<IDepartmentLogic, DepartmentLogic>();
             services.AddTransient<IHospitalLogic, HospitalLogic>();
 
-            //services.AddSignalR();
+            services.AddSignalR();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -81,7 +81,7 @@ namespace GCWG06_HFT_2021221.Endpoint2
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                //endpoints.MapHub<SignalRHub>("/hub");
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
