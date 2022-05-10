@@ -54,7 +54,7 @@ namespace GCWG06_HFT_2021221.Endpoint2.Controllers
         {
             var employeeToDelete = this.logic.GetEmployeeById(id);
             this.logic.Delete(id);
-            this.hub.Clients.All.SendAsync("ActorDeleted", employeeToDelete);
+            this.hub.Clients.All.SendAsync("EmployeeDeleted", employeeToDelete);
         }
     }
 }
