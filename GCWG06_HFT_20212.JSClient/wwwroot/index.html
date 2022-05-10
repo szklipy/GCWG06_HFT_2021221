@@ -2,9 +2,33 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Employee UI</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <h1>Employee Catalog</h1>
 
+    <div id="formdiv">
+        <label>Employee Name</label>
+        <input type="text" id="employeeName" />
+        <label>Employee Salary</label>
+        <input type="text" value="0" id="employeeSalary" />
+        <button type="button" onclick="create()">Add Employee</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
 </body>
 </html>

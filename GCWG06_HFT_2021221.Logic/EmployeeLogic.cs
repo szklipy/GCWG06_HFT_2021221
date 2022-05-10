@@ -25,12 +25,12 @@ namespace GCWG06_HFT_2021221.Logic
                     nameof(employee)
                 );
             }
-            if (employee.Salary == null || employee.Salary<0)
-            {
-                throw new ArgumentException(
-                    "Price is not valid"
-                    );
-            }
+            //if (employee.Salary == null || employee.Salary<0)
+            //{
+            //    throw new ArgumentException(
+            //        "Price is not valid"
+            //        );
+            //}
             empRepo.Create(employee);
         }
         public void Delete(int id)
