@@ -60,8 +60,8 @@ function display() {
             "<tr><td>" + t.employee_id + "</td><td>"
             + t.name + "</td><td>"
             + t.salary + "</td><td>"
-        + `<button type="buttin" onclick="remove(${t.employee_id})">Delete</button>`
-        + `<button type="buttin" onclick="showupdate(${t.employee_id})">Update</button>`
+        + `<button type="button" onclick="remove(${t.employee_id})">Delete</button>`
+        + `<button type="button" onclick="showupdate(${t.employee_id})">Update</button>`
             + "</td></tr>";
     });
 }
